@@ -109,11 +109,9 @@
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
-				unityInstance.SetFullscreen(1);
-				const tg = window.Telegram.initTelegramWebApp();
-				const user = tg.initDataUnsafe.user;
-				unityInstance.SendMessage('Canvas', 'ReceiveMessage', "test");
-     
+              unityInstance.SetFullscreen(1);
+              unityInstance.SendMessage('Canvas', 'ReceiveMessage', "test");
+          
               }).catch((message) => {
                 alert(message);
               });
