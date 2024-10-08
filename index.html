@@ -95,10 +95,10 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance ) => {
-            
                 loadingBar.style.display = "none";
                 unityInstance.SetFullscreen(1);
-              unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
+                alert('userid='+user.id);
+                unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
               }).catch((message) => {
                 alert(message);
               });
