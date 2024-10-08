@@ -97,7 +97,7 @@
               }).then((unityInstance ) => {
                 loadingBar.style.display = "none";
                 unityInstance.SetFullscreen(1);
-                alert('userid='+user.id.toString());
+               
                 unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id.toString());
               }).catch((message) => {
                 alert(message);
