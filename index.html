@@ -34,8 +34,9 @@
               console.log("Telegram WebApp is available.");
               // Telegram WebApp 관련 코드 실행
               const user = tg.initDataUnsafe.user;
-              unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
               alert('userid='+user.id);
+              unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
+             
           } else {
               console.log("Telegram WebApp is not available. Please run this in the Telegram Mini App environment.");
           }
