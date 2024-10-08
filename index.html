@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | webgl</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -24,6 +24,7 @@
         <div id="unity-build-title">webgl</div>
       </div>
     </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -109,9 +110,9 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
 				unityInstance.SetFullscreen(1);
-				const tg = window.Telegram.WebApp;
+				const tg = window.Telegram.initTelegramWebApp();
 				const user = tg.initDataUnsafe.user;
-				unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
+				unityInstance.SendMessage('Canvas', 'ReceiveMessage', "test");
      
               }).catch((message) => {
                 alert(message);
