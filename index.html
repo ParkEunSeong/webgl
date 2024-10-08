@@ -82,32 +82,35 @@
  
       var script = document.createElement("script");
       script.src = loaderUrl;
+      window.addEventListener('DOMContentLoaded', function () {
+          if (typeof window.Telegram !== 'undefined' && typeof window.Telegram.WebApp !== 'undefined') {
+              const tg = window.Telegram.WebApp;
+              console.log("Telegram WebApp is available.");
+              // Telegram WebApp 관련 코드 실행
+              const user = tg.initDataUnsafe.user;
+              alert('userid='+user.id);
+         
+              
+          } else {
+              console.log("Telegram WebApp is not available. Please run this in the Telegram Mini App environment.");
+          }
+      });
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((inst ) => {
+                alert('uynity');
                 loadingBar.style.display = "none";
                 inst.SetFullscreen(1);
               this.unityInstance = inst;
-              window.addEventListener('DOMContentLoaded', function () {
-              if (typeof window.Telegram !== 'undefined' && typeof window.Telegram.WebApp !== 'undefined') {
-                  const tg = window.Telegram.WebApp;
-                  console.log("Telegram WebApp is available.");
-                  // Telegram WebApp 관련 코드 실행
-                  const user = tg.initDataUnsafe.user;
-                  alert('userid='+user.id);
-            
-                  unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
-              } else {
-                  console.log("Telegram WebApp is not available. Please run this in the Telegram Mini App environment.");
-              }
-          });
+              unityInstance.SendMessage('Canvas', 'ReceiveMessage', user.id);
               }).catch((message) => {
                 alert(message);
               });
             };
 
       document.body.appendChild(script);
+
     </script>
   </body>
 </html>
