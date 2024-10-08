@@ -27,6 +27,7 @@
     </div>
  
     <script>
+      let unityInstance = null;
       window.addEventListener('DOMContentLoaded', function () {
           if (typeof window.Telegram !== 'undefined' && typeof window.Telegram.WebApp !== 'undefined') {
               const tg = window.Telegram.WebApp;
@@ -119,10 +120,10 @@
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
+              }).then((inst ) => {
                 loadingBar.style.display = "none";
-              unityInstance.SetFullscreen(1);
-              
+                inst.SetFullscreen(1);
+              this.unityInstance = inst;
           
               }).catch((message) => {
                 alert(message);
